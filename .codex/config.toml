@@ -1,0 +1,142 @@
+[agents]
+enabled = true
+
+[agents.trend_explorer]
+description = "Department 1A: evaluate sourced trend and use-case signals for Lumen Sieve."
+config_file = "agents/trend_explorer.toml"
+
+[agents.forum_researcher]
+description = "Department 1B: evaluate public forum pain signals and response opportunities."
+config_file = "agents/forum_researcher.toml"
+
+[agents.competitor_auditor]
+description = "Department 1C: verify competitor-page baselines and actual changes."
+config_file = "agents/competitor_auditor.toml"
+
+[agents.directory_sieve]
+description = "Department 1E: validate launch-directory organization candidates and identity."
+config_file = "agents/directory_sieve.toml"
+
+[agents.enrichment_orchestrator]
+description = "Department 2A: review asynchronous Lumen enrichment attempts and ambiguity."
+config_file = "agents/enrichment_orchestrator.toml"
+
+[agents.fit_gatekeeper]
+description = "Department 2B: challenge evidence, rubric factors, and fit decisions."
+config_file = "agents/fit_gatekeeper.toml"
+
+[agents.decision_maker_locator]
+description = "Department 2C: review sourced business contacts and decision-maker claims."
+config_file = "agents/decision_maker_locator.toml"
+
+[agents.hyper_personalization_engine]
+description = "Department 3A: draft evidence-bound messages for qualified prospects."
+config_file = "agents/hyper_personalization_engine.toml"
+
+[agents.technical_writer]
+description = "Department 3B: draft sourced technical explanations and case studies."
+config_file = "agents/technical_writer.toml"
+
+[agents.ab_framework_optimizer]
+description = "Department 3C: analyze recorded variant outcomes and recommend experiments."
+config_file = "agents/ab_framework_optimizer.toml"
+
+[agents.content_critic]
+description = "Department 3D: review draft claims, evidence, structure and readability."
+config_file = "agents/content_critic.toml"
+
+[agents.outreach_dispatcher]
+description = "Department 4A: inspect exact approved outreach and dispatch outcomes."
+config_file = "agents/outreach_dispatcher.toml"
+
+[agents.inbound_intent_classifier]
+description = "Department 4B: review inbound intent, no-contact and reply routing."
+config_file = "agents/inbound_intent_classifier.toml"
+
+[agents.autonomous_responder_scheduler]
+description = "Department 4C: draft contextual replies and verified meeting proposals."
+config_file = "agents/autonomous_responder_scheduler.toml"
+
+[agents.central_cron_execution_manager]
+description = "Department 5A: review local schedules, queue handoffs, pause state and recovery."
+config_file = "agents/central_cron_execution_manager.toml"
+
+[agents.data_store_token_ledger]
+description = "Department 5B: inspect provider usage, price versions, backups and restore evidence."
+config_file = "agents/data_store_token_ledger.toml"
+
+[agents.reddit_inbound_hacker]
+description = "Department 6A: research relevant Reddit discussions and prepare helpful, sourced response drafts."
+config_file = "agents/reddit_inbound_hacker.toml"
+
+[agents.hacker_news_content_strategist]
+description = "Department 6B: turn Hacker News signals into sourced technical article and comment drafts."
+config_file = "agents/hacker_news_content_strategist.toml"
+
+[agents.product_hunt_launchpads_orchestrator]
+description = "Department 6C: prepare and track approved launch assets, checklists and response drafts."
+config_file = "agents/product_hunt_launchpads_orchestrator.toml"
+
+[agents.linkedin_authority_builder]
+description = "Department 6D: research relevant LinkedIn context and prepare evidence-backed authority drafts."
+config_file = "agents/linkedin_authority_builder.toml"
+
+[agents.b2b_prospect_list_indexer]
+description = "Department 6E: normalize sourced B2B organization candidates for qualification."
+config_file = "agents/b2b_prospect_list_indexer.toml"
+
+[agents.copywriting_outreach_guard]
+description = "Department 7A: enforce exact-hash content and outreach policy checks."
+config_file = "agents/copywriting_outreach_guard.toml"
+
+[agents.rate_reputation_watchdog]
+description = "Department 7B: inspect quotas and provider or domain health before action."
+config_file = "agents/rate_reputation_watchdog.toml"
+
+[agents.database_loop_inspector]
+description = "Department 7C: detect integrity violations, duplicates, or workflow cycles."
+config_file = "agents/database_loop_inspector.toml"
+
+[agents.growth_optimization_auditor]
+description = "Department 7D: produce evidence-bound cross-channel growth recommendations."
+config_file = "agents/growth_optimization_auditor.toml"
+
+[agents.pipeline_lag_sentinel]
+description = "Department 7E: detect overdue, stalled, or uncertain work safely."
+config_file = "agents/pipeline_lag_sentinel.toml"
+
+[agents.suppression_compliance_vault]
+description = "Department 7F: enforce global suppression and minimal compliance records."
+config_file = "agents/suppression_compliance_vault.toml"
+
+[agents.autonomous_use_case_scout]
+description = "Department 8A: discover sourced market pain signals."
+config_file = "agents/autonomous_use_case_scout.toml"
+
+[agents.deep_dive_vertical_researcher]
+description = "Department 8B: validate opportunities with independent support and counter evidence."
+config_file = "agents/deep_dive_vertical_researcher.toml"
+
+[agents.vertical_prospect_hunter]
+description = "Department 8C: find sourced organizations with prospect-specific pain evidence."
+config_file = "agents/vertical_prospect_hunter.toml"
+
+[agents.central_brain_dispatch_arbiter]
+description = "Department 8D: rank reviewed opportunities and route approved intakes."
+config_file = "agents/central_brain_dispatch_arbiter.toml"
+
+[agents.multi_channel_feedback_listener]
+description = "Department 9A: ingest authorized feedback and support events with durable cursors."
+config_file = "agents/multi_channel_feedback_listener.toml"
+
+[agents.bug_triage_classifier]
+description = "Department 9B: classify and escalate support tickets with evidence and confidence."
+config_file = "agents/bug_triage_classifier.toml"
+
+[agents.google_workspace_ticket_synchronizer]
+description = "Department 9C: project reviewed ticket metadata to the authorized Google support sheet."
+config_file = "agents/google_workspace_ticket_synchronizer.toml"
+
+[agents.automated_customer_responder]
+description = "Department 9D: prepare and review accurate customer replies without implicit sending."
+config_file = "agents/automated_customer_responder.toml"

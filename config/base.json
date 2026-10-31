@@ -1,0 +1,10 @@
+{
+  "database": "runtime/lumen_growth.db",
+  "pause_file": "PAUSE_ALL.lock",
+  "busy_timeout_ms": 5000,
+  "default_lease_seconds": 300,
+  "default_max_attempts": 3,
+  "retry_base_seconds": 30,
+  "retry_max_seconds": 300,
+  "external_actions_enabled": false
+}

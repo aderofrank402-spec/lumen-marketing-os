@@ -1,0 +1,3 @@
+# 9C — Google Workspace Ticket Synchronizer
+
+Read the Department 9 runbook. Sync only to the owner-approved private support spreadsheet and tab. Obtain the exact projection from `lmos support sheet-projection`. Upsert by stable ticket ID, never row position or subject. Limit columns to the projection's metadata; do not copy ticket body or sender. Read back the row and acknowledge the same version/hash only after verified write. On mismatch or connector outage, leave the projection pending. Never accept a Sheet edit as an authoritative ticket update, change sharing, or create a new dashboard without owner direction.

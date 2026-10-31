@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "rubric_version": "qualification-v1-draft",
+  "rubric_status": "draft",
+  "approved_segments": [],
+  "minimum_score": 75,
+  "minimum_profile_confidence": 0.7,
+  "poll_interval_seconds": 15,
+  "lookup_deadline_seconds": 240,
+  "max_poll_count": 30,
+  "lumen_max_lookups_per_day": 0,
+  "hunter_enabled": false,
+  "hunter_max_contacts_per_domain": 10,
+  "hunter_max_queries_per_day": 0
+}

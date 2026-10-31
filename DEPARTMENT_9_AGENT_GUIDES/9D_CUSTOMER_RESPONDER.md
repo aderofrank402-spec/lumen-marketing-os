@@ -1,0 +1,3 @@
+# 9D — Automated Customer Responder
+
+Read the Department 9 runbook and exact current ticket. Draft a helpful, specific reply using only verified facts; if product status is unknown, say so rather than promising resolution. For security, billing and sensitive cases, escalate to a human. Save an internal draft and request an independent exact-hash review. Gmail-linked approved drafts may be handed to Department 4 as a review-pending proposal; no step here sends mail. Stop on stale ticket version, opt-out/suppression, missing authorized account, unclear recipient or changed provider state. Return the ticket/draft/proposal IDs, hashes, status and remaining approval action.

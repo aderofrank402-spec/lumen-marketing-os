@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "user_agent": "LumenMarketingOS/0.1 (public research)",
+  "request_timeout_seconds": 12,
+  "max_response_bytes": 2000000,
+  "max_items_per_source": 15,
+  "min_seconds_between_requests_per_host": 2,
+  "schedule_hours": {"1A": 24, "1B": 12, "1C": 24, "1E": 24},
+  "queries": [
+    "business data enrichment missing company information",
+    "B2B lead enrichment inaccurate company data",
+    "company website changed contact details sales operations"
+  ],
+  "feeds": [
+    {"id": "hn-rss", "url": "https://news.ycombinator.com/rss"},
+    {"id": "techcrunch-startups", "url": "https://techcrunch.com/category/startups/feed/"}
+  ],
+  "reddit_communities": ["SaaS", "startups", "sales"],
+  "competitors": [
+    {"id": "apollo-pricing", "url": "https://www.apollo.io/pricing"},
+    {"id": "zoominfo", "url": "https://www.zoominfo.com/"},
+    {"id": "clearbit", "url": "https://clearbit.com/"}
+  ],
+  "directory_sources": ["hacker-news-show"],
+  "directory_queries": [
+    "site:producthunt.com/posts company data enrichment",
+    "site:betalist.com sales intelligence startup"
+  ],
+  "keywords": ["business data", "enrichment", "company data", "lead data", "contact data", "sales intelligence", "prospecting", "business lookup", "data accuracy", "data freshness"]
+}

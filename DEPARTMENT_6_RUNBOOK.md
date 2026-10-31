@@ -1,0 +1,45 @@
+# Department 6 — community research, launch preparation and B2B indexing
+
+Five Codex specialist roles are declared in `.codex/config.toml`. Each role must read its matching file in `DEPARTMENT_6_AGENT_GUIDES/` before work. The local Python OS persists trigger definitions, due tasks, claimed leases, observations, immutable draft hashes, launch checklist decisions, and prospect-import results. It does **not** launch Codex or connect an account simply because a timer fired. For 6A–6D, a daily in-chat Codex heartbeat now provides the wake-up handoff, with Reddit, Product Hunt and LinkedIn browser sessions plus the official public HN API as read paths; its first unattended run remains unverified.
+
+## Trigger and agent loop
+
+`lmos community configure-trigger` records an inactive `interval`, `event`, or `manual` trigger with owner, input JSON and version. Interval triggers require seconds and a timezone-aware first due instant; `community tick` creates one idempotent task for the latest missed occurrence and advances the cursor. Event/manual tasks can be created with `community trigger AGENT --key UNIQUE_KEY --input-file PATH`; if tied to a configured trigger, that trigger must be active and must match the agent. The global and community-lane pause gates apply. For a persistent local timer, Department 5 can schedule the allowlisted internal `community.tick` operation, but it must be separately activated.
+
+Example input JSON for 6A: `{"thread_url":"https://www.reddit.com/r/example/comments/ID","scope":"operator-approved research"}`. For 6B use `topic` or `source_url`; for 6C use `platform` (`product_hunt` or `launchpad`) and `launch_at`; for 6D use `topic` or `source_url`; for 6E use `source_name` and `source_url`. Do not supply passwords, cookies or private browser storage in task inputs.
+
+For an already-published Product Hunt listing, 6C accepts `{"mode":"listing_audit","platform":"product_hunt","source_url":"https://www.producthunt.com/products/EXAMPLE/launches/EXAMPLE"}` without a fabricated future `launch_at`. This is a read-only listing and post-launch improvement task, not permission to relaunch or edit the page.
+
+```powershell
+.\.venv\Scripts\lmos.exe community configure-trigger reddit-interval 6A --kind interval --owner operator --input-file path\to\approved-scope.json --interval-seconds 14400 --next-due-at 2026-10-02T09:00:00+03:00
+.\.venv\Scripts\lmos.exe community set-trigger-active reddit-interval --active --actor operator
+.\.venv\Scripts\lmos.exe community tick
+.\.venv\Scripts\lmos.exe community report
+```
+
+When an account connection has actually been checked, record only an account reference—not a credential—with `community connection-status 6A --platform reddit --state ready --account-reference ACCOUNT_ALIAS --verified --actor OPERATOR`. That command records an operator attestation; it cannot test browser identity on its own. The agent then claims one task with `community claim 6A --worker codex-6A`, reads the returned absolute guide path and task brief, researches through the connected browser session, and submits sourced results with `community observe` and `community draft`. It finishes with `community finish TASK --worker codex-6A --outcome review --reason "sourced draft ready"` or `no_match`/`blocked`. Claims expire and may be recovered; the instruction-file hash is pinned in each task, so a changed guide blocks an old task instead of silently changing its meaning. Source observations retain content versions; duplicate trigger keys and identical drafts are idempotent.
+
+For 6B's public read path, `community hn-scan --group askstories --limit 10` reads current story IDs and summaries from HN's official Firebase API; `community hn-item ITEM_ID --max-comments 3` reads one item, its immediate parent if it is a comment, and up to three direct comments. No login is required for these reads. A successful controlled live probe can be recorded as `community connection-status 6B --platform hacker_news --state ready --account-reference public:hn-firebase-v0 --verified --actor OPERATOR`; here `account-reference` identifies a public source, **not** an HN account or posting permission. These reads neither create durable observations nor run scheduled tasks: a 6B Codex role must still claim a task, evaluate relevance, and persist any observation/draft through the task ledger. Publishing stays disabled.
+
+The output is an internal review artifact. `community review-draft` checks the exact body hash and records an editorial decision; it does not post to Reddit, HN, Product Hunt, LinkedIn or any other service. A new 6C launch task starts with eight open checklist checks and requires evidence before an item can be marked reviewed; an existing-listing audit does not fabricate a new launch checklist. The signed-in Reddit and Product Hunt sessions support read-only Codex research, but no public platform action is attached.
+
+On 2026-10-01 the read-only 6A, 6B, 6C and 6D paths were exercised with live sources and durable tasks. The 6D LinkedIn session was verified as `frank adero` (`linkedin:frank-adero-697627312`), and task `600ec36166204fce8e597ae54bee3212` produced a source observation and an internal `linkedin_insight` draft. `community draft-detail DRAFT_ID` shows a draft's exact body, evidence URLs and review state. Four active local interval definitions now create 6A, 6B and 6D research tasks daily at 09:00 Africa/Nairobi and a 6C existing-listing audit weekly on Monday at 09:00. The in-chat Codex heartbeat `lumen-community-research-and-listing-audit` is scheduled daily at 09:05 to call `community tick` and handle at most one due task per role, including 6D. It has not yet had its first scheduled run; manual live tests do not prove unattended browser-session continuity. Keep the desktop app and computer running for local scheduled work. Account aliases are checked both against the local connection registry at claim time and against the visible browser session by the Codex run. No public posting path is enabled.
+
+## 6E prospect import
+
+The 6E role can gather an authorized list through its later-connected source/session and place a JSON array of rows in a local file. Each row needs `source_url`, `company_name`, `domain`, and two-letter `country`. An operator approves the named source and version, then imports it:
+
+```powershell
+    .\.venv\Scripts\lmos.exe community import-prospects --file path\to\source-rows.json --source-name DIRECTORY --source-url https://directory.example.org/list --source-version 2026-10-01 --approved-by OPERATOR --task-id CLAIMED_6E_TASK_ID --worker codex-6E
+.\.venv\Scripts\lmos.exe community import-report
+```
+
+Re-imports and repeated rows are deduplicated. Invalid or ambiguous identities are quarantined with reasons; valid new rows create candidate organizations and `qualification_intakes` in `needs_review`. A 6E task can reach `needs_review` only after a batch is durably linked to its live lease; the batch report returns the exact source rows, quarantine reasons, candidate organization IDs and intake IDs. They do not become verified businesses, prospects, contacts, or outreach actions automatically. Qualification approval remains its own decision. Import files may contain sensitive business/contact context and should remain in the ignored local runtime area, not the repository. On 2026-10-01, a controlled Wikidata CC0 company-data sample was imported as batch `6abbae33dadb4d04971eaa67d43d4eb3`: two candidate intakes, one duplicate and one quarantined alternate domain. It verifies the 6E handoff, not commercial fit.
+
+A second bounded batch, `bfda399f4ba446ff8126ce648d4caeea`, used two Wikidata entries cross-checked against the companies' own sites: Inno ONE GmbH and Clarify B2B Limited. Both remain provisional organization candidates in Department 2 `needs_review` intakes, **not** validated buyers or outreach targets. This is an agency-segment hypothesis, not operator approval of an ICP. The CLI import path now respects the global/community pause gate; a paused import creates no batch. Live database counts after the two batches were four intakes, zero prospects and zero outreach actions.
+
+## Connection-stage checks
+
+For each platform, confirm the intended account identity and permitted research surface, and test one controlled read-only task. 6A–6E passed manual live handoffs on 2026-10-01; the recurring 6A–6D heartbeat is active but has not yet proved unattended continuity. HN and Wikidata public data support read-only work without an account; a role's connection state describes its actual access path, not posting rights. See `VERIFICATION_REGISTER/DEPARTMENT_6.md` for remaining checks.
+
+Official OpenAI documentation describes project-scoped [Codex subagent roles](https://learn.chatgpt.com/docs/agent-configuration/subagents) and [computer use](https://developers.openai.com/api/docs/guides/agents-api/tools/computer-use); those capabilities do not by themselves guarantee a persistent authenticated session or trigger execution. Keep session setup and verification separate from the local task ledger.
