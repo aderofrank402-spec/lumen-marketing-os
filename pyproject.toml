@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lumen-marketing-os"
-version = "0.1.0"
-description = "Local operating system foundation for Lumen Sieve marketing"
+version = "1.0.0"
+description = "Evidence-bound control plane for AI-assisted marketing operations"
 requires-python = ">=3.11"
 dependencies = ["tzdata"]
 
