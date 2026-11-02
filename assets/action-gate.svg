@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="660" viewBox="0 0 1280 660" role="img" aria-labelledby="title desc">
+  <title id="title">Lumen Marketing OS external-action control gate</title>
+  <desc id="desc">A prepared action must pass pause, eligibility, suppression, exact approval, quota, adapter health, and final rechecks before dispatch.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071126"/>
+      <stop offset="1" stop-color="#0b2239"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#67e8f9"/>
+    </marker>
+    <style>
+      .title { font: 700 28px 'Segoe UI', Arial, sans-serif; fill: #f8fafc; }
+      .subtitle { font: 400 15px 'Segoe UI', Arial, sans-serif; fill: #9fb4cf; }
+      .label { font: 650 16px 'Segoe UI', Arial, sans-serif; fill: #f8fafc; text-anchor: middle; }
+      .detail { font: 400 13px 'Segoe UI', Arial, sans-serif; fill: #9fb4cf; text-anchor: middle; }
+      .card { fill: #10243e; stroke: #2a5078; stroke-width: 1.5; }
+      .decision { fill: #082f49; stroke: #22d3ee; stroke-width: 1.8; }
+      .safe { fill: #123323; stroke: #34d399; stroke-width: 1.8; }
+      .hold { fill: #3b2710; stroke: #fbbf24; stroke-width: 1.8; }
+      .line { fill: none; stroke: #67e8f9; stroke-width: 2; marker-end: url(#arrow); }
+      .branch { fill: none; stroke: #fbbf24; stroke-width: 1.7; marker-end: url(#arrow); }
+      .branch-label { font: 650 13px 'Segoe UI', Arial, sans-serif; fill: #fbbf24; }
+    </style>
+  </defs>
+  <rect width="1280" height="660" rx="22" fill="url(#background)"/>
+  <text x="54" y="55" class="title">External-action control gate</text>
+  <text x="54" y="81" class="subtitle">No generated draft becomes an external effect without narrow, current authorization.</text>
+
+  <path class="line" d="M 230 168 H 285"/>
+  <path class="line" d="M 485 168 H 540"/>
+  <path class="line" d="M 740 168 H 795"/>
+  <path class="line" d="M 995 168 H 1050"/>
+  <path class="line" d="M 1140 213 V 310 H 1035"/>
+  <path class="line" d="M 815 360 H 765"/>
+  <path class="line" d="M 565 360 H 515"/>
+  <path class="line" d="M 315 360 H 265"/>
+  <path class="line" d="M 165 410 V 500 H 285"/>
+  <path class="line" d="M 485 550 H 560"/>
+  <path class="line" d="M 760 550 H 835"/>
+  <path class="branch" d="M 385 218 V 280 H 385"/>
+  <path class="branch" d="M 895 410 V 462 H 1080"/>
+  <text x="398" y="252" class="branch-label">paused</text>
+  <text x="950" y="445" class="branch-label">missing or changed</text>
+
+  <rect x="50" y="120" width="180" height="96" rx="14" class="card"/>
+  <text x="140" y="159" class="label">Prepared action</text>
+  <text x="140" y="184" class="detail">Draft, target, channel</text>
+
+  <rect x="285" y="120" width="200" height="96" rx="14" class="decision"/>
+  <text x="385" y="159" class="label">Pause state</text>
+  <text x="385" y="184" class="detail">Global and lane checks</text>
+
+  <rect x="540" y="120" width="200" height="96" rx="14" class="decision"/>
+  <text x="640" y="159" class="label">Eligibility</text>
+  <text x="640" y="184" class="detail">Evidence and contact rules</text>
+
+  <rect x="795" y="120" width="200" height="96" rx="14" class="decision"/>
+  <text x="895" y="159" class="label">Suppression</text>
+  <text x="895" y="184" class="detail">Fail closed if uncertain</text>
+
+  <rect x="1050" y="120" width="180" height="96" rx="14" class="decision"/>
+  <text x="1140" y="159" class="label">Exact approval</text>
+  <text x="1140" y="184" class="detail">Hash, target, expiry</text>
+
+  <rect x="815" y="310" width="220" height="100" rx="14" class="card"/>
+  <text x="925" y="349" class="label">Reserve quota</text>
+  <text x="925" y="374" class="detail">Atomic capacity claim</text>
+
+  <rect x="565" y="310" width="200" height="100" rx="14" class="card"/>
+  <text x="665" y="349" class="label">Adapter health</text>
+  <text x="665" y="374" class="detail">Capability confirmed</text>
+
+  <rect x="315" y="310" width="200" height="100" rx="14" class="card"/>
+  <text x="415" y="349" class="label">Unique action key</text>
+  <text x="415" y="374" class="detail">Duplicate protection</text>
+
+  <rect x="65" y="310" width="200" height="100" rx="14" class="decision"/>
+  <text x="165" y="349" class="label">Final recheck</text>
+  <text x="165" y="374" class="detail">Pause and suppression</text>
+
+  <rect x="285" y="500" width="200" height="100" rx="14" class="safe"/>
+  <text x="385" y="539" class="label">Dispatch</text>
+  <text x="385" y="564" class="detail">Explicit adapter boundary</text>
+
+  <rect x="560" y="500" width="200" height="100" rx="14" class="safe"/>
+  <text x="660" y="539" class="label">Persist outcome</text>
+  <text x="660" y="564" class="detail">Audit and recovery state</text>
+
+  <rect x="835" y="500" width="200" height="100" rx="14" class="hold"/>
+  <text x="935" y="539" class="label">Review if uncertain</text>
+  <text x="935" y="564" class="detail">Never replay blindly</text>
+
+  <rect x="1015" y="462" width="215" height="86" rx="14" class="hold"/>
+  <text x="1122" y="497" class="label">Stop or hold</text>
+  <text x="1122" y="522" class="detail">No external effect</text>
+</svg>

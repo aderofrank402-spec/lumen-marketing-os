@@ -36,20 +36,7 @@ This project treats those questions as first-class product requirements.
 
 ## System map
 
-```mermaid
-flowchart LR
-    operator[Operator and reviewers] --> cli[CLI and scheduled entrypoints]
-    cli --> workflows[Nine department workflows]
-    workflows --> policy[Policy and approval gates]
-    policy --> queue[Durable jobs and outbox]
-    queue --> adapters[Explicit provider adapters]
-    workflows --> store[Versioned SQLite state]
-    policy --> store
-    queue --> store
-    store --> audit[Audit, recovery, and reporting]
-    pause[Global and lane pause controls] -.-> workflows
-    pause -.-> queue
-```
+![Lumen Marketing OS system architecture](assets/system-map.svg)
 
 ### Nine departments
 
@@ -67,20 +54,7 @@ flowchart LR
 
 ## The final action gate
 
-```mermaid
-graph TD
-    draft["Prepared action"] --> paused{"Paused?"}
-    paused -->|"yes"| stop["Stop safely"]
-    paused -->|"no"| exact["Load exact draft, target, channel, and policy"]
-    exact --> suppressed{"Suppressed or ineligible?"}
-    suppressed -->|"yes"| stop
-    suppressed -->|"no"| approved{"Unexpired named approval matches exact hash?"}
-    approved -->|"no"| review["Hold for review"]
-    approved -->|"yes"| quota["Reserve quota and verify adapter health"]
-    quota --> recheck["Recheck pause and suppression immediately before effect"]
-    recheck --> dispatch["Record unique action key and dispatch through adapter"]
-    dispatch --> audit["Persist outcome and audit trail"]
-```
+![Lumen Marketing OS external-action control gate](assets/action-gate.svg)
 
 See [the control model](docs/CONTROL_MODEL.md) for the full fail-closed sequence.
 
