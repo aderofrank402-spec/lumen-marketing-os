@@ -37,18 +37,18 @@ This project treats those questions as first-class product requirements.
 ## System map
 
 ```mermaid
-graph LR
-    operator["Operator and reviewers"] --> cli["CLI and scheduled entrypoints"]
-    cli --> workflows["Nine department workflows"]
-    workflows --> policy["Policy and approval gates"]
-    policy --> queue["Durable jobs and outbox"]
-    queue --> adapters["Explicit provider adapters"]
-    workflows --> store[("Versioned SQLite state")]
+flowchart LR
+    operator[Operator and reviewers] --> cli[CLI and scheduled entrypoints]
+    cli --> workflows[Nine department workflows]
+    workflows --> policy[Policy and approval gates]
+    policy --> queue[Durable jobs and outbox]
+    queue --> adapters[Explicit provider adapters]
+    workflows --> store[Versioned SQLite state]
     policy --> store
     queue --> store
-    store --> audit["Audit, recovery, and reporting"]
-    pause["Global and lane pause controls"] -. blocks .-> workflows
-    pause -. blocks .-> queue
+    store --> audit[Audit, recovery, and reporting]
+    pause[Global and lane pause controls] -.-> workflows
+    pause -.-> queue
 ```
 
 ### Nine departments

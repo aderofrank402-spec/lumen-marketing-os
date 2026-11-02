@@ -12,16 +12,16 @@ This guide explains the repository at interview depth: what enters the system, w
 6. **Audit and recovery** — state transitions, decisions, outcomes, backups, and recovery operations remain inspectable.
 
 ```mermaid
-graph TB
-    entry["CLI and scheduler"] --> runtime["Department runtime"]
-    runtime --> evidence["Evidence and draft artifacts"]
-    evidence --> decision["Policy and human decision"]
-    decision --> job["Durable job or outbox record"]
-    job --> adapter["Provider adapter boundary"]
-    runtime --> db[("SQLite operational state")]
+flowchart TB
+    entry[CLI and scheduler] --> runtime[Department runtime]
+    runtime --> evidence[Evidence and draft artifacts]
+    evidence --> decision[Policy and human decision]
+    decision --> job[Durable job or outbox record]
+    job --> adapter[Provider adapter boundary]
+    runtime --> db[SQLite operational state]
     decision --> db
     job --> db
-    adapter --> outcome["Recorded outcome"]
+    adapter --> outcome[Recorded outcome]
     outcome --> db
 ```
 
